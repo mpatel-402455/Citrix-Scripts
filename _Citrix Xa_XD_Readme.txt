@@ -16,3 +16,6 @@ https://docs.citrix.com/en-us/xenapp-and-xendesktop/7-6/cds-sdk-wrapper-rho/xad-
 
 
 Get-BrokerController -AdminAddress "IP or Controllers FQDN"
+
+Example 1:
+Get-BrokerSession -AdminAddress BrokerController01 |Select-Object -Property AppState,SessionState,SessionType, ApplicationsInUse, MachineName, UserFullName, UserName -First 1
