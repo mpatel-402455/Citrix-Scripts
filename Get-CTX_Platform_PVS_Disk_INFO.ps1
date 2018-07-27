@@ -22,6 +22,13 @@ $DiskVersion = (@{Name=" Disk Type";Expression={if ($_.DiskVersionAccess -eq 0) 
 
 # Example 1
 Get-PvsDeviceInfo | Select-Object -Property CollectionName,ServerName,Name,DeviceMac, DiskFileName,DiskVersion,$DiskVersion, DiskLocatorName | Sort-Object -Property CollectionName,type| ft -AutoSize # Export-Csv -Path C:\temp\filename.csv #ft -AutoSize
+
+# Example 1.1 - B Only Master servres
+Get-PvsDeviceInfo | Where-Object {$_.Name -like "CTXMasterServerName*" } | Select-Object -Property CollectionName,ServerName,Name,DeviceMac, DiskFileName,DiskVersion,$DiskVersion, DiskLocatorName | Sort-Object -Property CollectionName,type| ft -AutoSize
+
+#Example 1.2 - B Only Master servers and not from Specified PVS server
+Get-PvsDeviceInfo | Where-Object {$_.Name -like "CTXMasterServerName*" -and $_.ServerName -notin "SERVER11" } | Select-Object -Property CollectionName,ServerName,Name,DeviceMac, DiskFileName,DiskVersion,$DiskVersion, DiskLocatorName | Sort-Object -Property CollectionName,type| ft -AutoSize
+
 # Example 2
 Get-PvsDeviceInfo | Where-Object {$_.CollectionName -like "CTX_NameOfDeviceCollection"}  | Select-Object -Property CollectionName,ServerName,Name,DeviceMac, DiskFileName,DiskVersion,$DiskVersion, DiskLocatorName | Sort-Object -Property CollectionName,type| ft -AutoSize # Export-Csv -Path C:\temp\filename.csv #ft -AutoSize
 
