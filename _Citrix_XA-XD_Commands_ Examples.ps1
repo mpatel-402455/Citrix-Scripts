@@ -12,3 +12,6 @@
 
 #Example: Shows Configured Users/Group info for specified published applicaiton in XA 6.5
   Get-XAAccount -ComputerName CtxXML01.lab.com -BrowserName "MS Word 2016"
+
+#Example: Shows Published Applications report including, WorkerGroup, Servers, DisplayName, Discription, and Users
+Get-XAApplicationReport -ComputerName CtxXML01.lab.com -BrowserName "MS Word 2016" | select-object WorkerGroupNames, @{n=”Servers”;e={[string]::join(” ; “, $_.ServerNames)}}, DisplayName, Description, @{n=”Users”;e={[string]::join(” ; “, $_.Accounts)}}
