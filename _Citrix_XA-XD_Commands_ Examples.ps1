@@ -97,7 +97,7 @@ https://support.citrix.com/article/CTX230775
   Get-EventLog -Source "Citrix ConfigSync Service"  -LogName Application | Select-Object -Property EventID,TimeGenerated,Message -First 5 | ft -AutoSize -Wrap 
 
 #Working LCH example event logs:
-  Get-EventLog -Source "Citrix ConfigSync Service"  -LogName Application -ComputerName xisawodcgti02| Select-Object -Property EventID,TimeGenerated,Message -First 5 | ft -AutoSize -Wrap 
+  Get-EventLog -Source "Citrix ConfigSync Service"  -LogName Application -ComputerName DDCHostName| Select-Object -Property EventID,TimeGenerated,Message -First 5 | ft -AutoSize -Wrap 
 
   
 #============================================
