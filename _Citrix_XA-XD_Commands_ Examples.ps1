@@ -68,7 +68,7 @@ $server; Get-WinEvent -max 5  -FilterHashtable @{providername='citrix broker ser
   #Restart the service on the Citrix server 
     Get-Service BrokerAgent | Restart-Service 
     
- # TO check even logs for to see if the DDC having issue in registering on Session Host servers
+ # TO check event logs for to see if the DDC having issue in registering on Session Host servers
 
   Get-WinEvent -ProviderName "Citrix Desktop Service" -max 15 | ft -Wrap -AutoSize timecreated, message 
   Get-WinEvent -ProviderName "Citrix Desktop Service" -max 5 | ft -Wrap -AutoSize timecreated, message
