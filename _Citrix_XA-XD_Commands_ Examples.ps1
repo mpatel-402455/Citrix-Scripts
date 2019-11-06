@@ -111,7 +111,7 @@ https://support.citrix.com/article/CTX230775
 Get-EventLog -LogName Application -InstanceId 3100,3101,3102,3103,3104,3105,3106,3012,3104,3013 -Source *Citrix* | Select-Object -Property EventID,Source,TimeGenerated,Message -First 15 | Format-Table -AutoSize -Wrap
 Get-EventLog -LogName Application -InstanceId 3012,3013,3104,3013 -Source "Citrix Broker Service" | Select-Object -Property EventID,Source,TimeGenerated,Message -First 55 | Format-Table -AutoSize -Wrap
 
-Get-EventLog -LogName Application -Source "Citrix Broker Service" | where {$_.Message -like "*FG\XSSA2PISYM001*"}| Select-Object -Property EventID,Source,TimeGenerated,Message -First 55 | Format-Table -AutoSize -Wrap
+Get-EventLog -LogName Application -Source "Citrix Broker Service" | where {$_.Message -like "*domain\HostName*"}| Select-Object -Property EventID,Source,TimeGenerated,Message -First 55 | Format-Table -AutoSize -Wrap
 
 Get-EventLog -LogName Application -InstanceId 3012,3013,3104,3013 -Source "Citrix Broker Service" -After '08/10/2019 00:00:00' | Select-Object -Property EventID,Source,TimeGenerated,Message -First 20 | Format-Table -AutoSize -Wrap
 
