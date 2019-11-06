@@ -34,7 +34,7 @@ Get-XAApplicationReport -ComputerName CtxXML01.lab.com -BrowserName "MS Word 201
   Get-BrokerSession -AdminAddress DDCServName | Where-Object {$_.UserName -eq "Domain\UserID"} | Stop-BrokerSession 
 
 # Get Sessions
-  Get-BrokerSession  -AdminAddress "xisadcgti08.saifg.rbc.com:80" -Filter "((UserName -like `"*UserID*`") -or (DesktopGroupName -like `"*UserID*`") -or (ClientName -like `"*UserID*`") -or (CatalogName -like `"*UserID*`") -or (DNSName -like `"*UserID*`") -or (HostingServerName -like `"*UserID*`") -or (HostedMachineName -like `"*UserID*`"))" -MaxRecordCount 500 -Property @("UserName","DNSName","DesktopGroupName","CatalogName","BrokeringTime","SessionState","AppState","SessionSupport","Uid","DesktopUid","MachineSummaryState","IsAnonymousUser","Protocol") -ReturnTotalRecordCount -Skip 0 -SortBy "+UserName" 
+  Get-BrokerSession  -AdminAddress "DDCName.domain.com:80" -Filter "((UserName -like `"*UserID*`") -or (DesktopGroupName -like `"*UserID*`") -or (ClientName -like `"*UserID*`") -or (CatalogName -like `"*UserID*`") -or (DNSName -like `"*UserID*`") -or (HostingServerName -like `"*UserID*`") -or (HostedMachineName -like `"*UserID*`"))" -MaxRecordCount 500 -Property @("UserName","DNSName","DesktopGroupName","CatalogName","BrokeringTime","SessionState","AppState","SessionSupport","Uid","DesktopUid","MachineSummaryState","IsAnonymousUser","Protocol") -ReturnTotalRecordCount -Skip 0 -SortBy "+UserName" 
 
 #Example: Get the events to show if the broker has lost connection to the database:
  
@@ -63,7 +63,7 @@ $server; Get-WinEvent -max 5  -FilterHashtable @{providername='citrix broker ser
 #============
 #Example: Unregistered desktop
   #To check if Servers is registered  use following command on DDC:
-		Get-BrokerMachine -AdminAddress DDCservName01 | Format-Table -AutoSize MachineName,RegistrationState,DeliveryType 
+	Get-BrokerMachine -AdminAddress DDCservName01 | Format-Table -AutoSize MachineName,RegistrationState,DeliveryType 
 
   #Restart the service on the Citrix server 
     Get-Service BrokerAgent | Restart-Service 
